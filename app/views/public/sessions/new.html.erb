@@ -1,26 +1,47 @@
-<h2>Log in</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<div class="container px-5 pt-5">
+  <div class="col-md-10">
+    <h4 class="bg-secondary col-2 text-white px-2 mb-5 text-center">ログイン</h4>
   </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+  <h5 class="bg-secondary col-4 text-white ml-5 mb-5 text-center">会員の方はこちらからログイン</h5>
+  <div class="row">
+    <div class="col-md-8 mx-auto">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="field mb-3">
+        <div class="row">
+          <div class="col-md-3">
+            <label for="email">メールアドレス</label>
+          </div>
+          <div class="col-md-8">
+            <%= f.email_field :email, autofocus: true, autocomplete: "email",class: "form-control",id: "email" %>
+          </div>
+        </div>
+      </div>
+      
+      <div class="field">
+        <div class="row">
+          <div class="col-md-3">
+            <label for="password">パスワード</label>
+          </div>
+          <div class="col-md-8">
+            <%= f.password_field :password, autocomplete: "current-password",class: "form-control",id: "password" %>
+          </div>
+        </div>
+      </div>
+      
+      <div class="actions my-5 mr-5">
+        <%= f.submit "ログイン",class: "btn btn-primary btn-lg btn-block col-3 mx-auto" %>
+      </div>
+      <% end %>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
-<% end %>
+  <div class="row">
+    <div class="col-md-6">
+      <h5 class="bg-secondary col-7 text-white ml-5 mb-4 text-center">会員登録がお済みでない方</h5>
+        
+    </div>
+  </div>
+    <p class="h5 ml-5 text-center col-8">
+      <u class="mr-3 ml-5"><%=link_to "こちら",new_customer_registration_path %></u>から新規登録を行なってください。
+    </p>
+</div>
 
-<%= render "public/shared/links" %>

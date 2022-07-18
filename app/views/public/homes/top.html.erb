@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="col-md-9 mx-auto mt-4">
+    <div class="card">
+      <img class="card-img" src="/assets/cake.jpg" width="400" height="380" alt="">
+      <div class="card-img-overlay">
+        <p class="h5 border col-md-8  col-sm-10 bg-white mx-auto my-5">
+          <br>
+        
+          ようこそ、ながのCAKEへ！<br>
+          このサイトは、ケーキ販売のECサイトになります。<br>
+          会員でない方も商品の閲覧はできますが、<br>
+          購入には会員登録が必要になります。
+          <br>
+          <br>
+          
+        </p>
+      </div>
+    </div>
+    
+  </div>
+  <h2 class="font-weight-bold my-3">新着商品</h2>
+  <div class="row">
+    <% @item.each do |item|  %>
+    <div class="col-md-3">
+      <%=image_tag item.get_image(200,200) %><br>
+        
+      <%=item.name %><br>
+        
+      ¥<%=item.add_tax_price.to_s(:delimited) %><br>
+    </div>
+    <%end%>
+  </div>
+  
+</div>

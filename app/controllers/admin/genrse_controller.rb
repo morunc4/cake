@@ -1,4 +1,5 @@
 class Admin::GenrseController < ApplicationController
+  
   def index
     @genre=Genre.new
     @genrse=Genre.all
@@ -25,4 +26,6 @@ class Admin::GenrseController < ApplicationController
   def genre_params
     params.require(:genre).permit(:name)
   end
+  
+  
 end

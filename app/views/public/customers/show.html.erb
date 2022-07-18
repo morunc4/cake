@@ -1,0 +1,41 @@
+<div class="container px-5 pt-5">
+  <h4 class="bg-secondary text-white col-2 px-4 mb-5">商品詳細</h4>
+  <div class="row">
+    <div class="col-2 h4 text-left">登録情報</div>
+      <div class="col-2 h4">
+      <%=link_to "編集する",edit_customer_path(current_customer.id),class: "btn btn-success" %>
+    </div>
+    
+  </div>
+  <table class="table col-md-10">
+    <tr class="border border-dark">
+      <td class="border col-3 bg-secondary text-white border-dark">氏名</td>
+      <td class="border border-dark"><%=current_customer.last_name %>　<%=current_customer.first_name %></td>
+    </tr>
+    
+    <tr class="border">
+      <td class="border col-3 bg-secondary text-white border-dark">カナ</td>
+      <td class="border border-dark"><%=current_customer.last_name_kana %>　<%=current_customer.first_name_kana %></td>
+    </tr>
+    
+    <tr class="border">
+      <td class="border col-3 bg-secondary text-white border-dark">郵便番号</td>
+      <td class="border border-dark"><%=current_customer.postal_code %></td>
+    </tr>
+    
+    <tr class="border">
+      <td class="border col-3 bg-secondary text-white border-dark">住所</td>
+      <td class="border border-dark"><%=current_customer.address %></td>
+    </tr>
+    
+    <tr class="border">
+      <td class="border col-3 bg-secondary text-white border-dark">電話番号</td>
+      <td class="border border-dark"><%=current_customer.telephone_number %></td>
+    </tr>
+    
+    <tr class="border">
+      <td class="border col-3 bg-secondary text-white border-dark">メールアドレス</td>
+      <td class="border border-dark"><%=current_customer.email %></td>
+    </tr>
+  </table>
+</div>

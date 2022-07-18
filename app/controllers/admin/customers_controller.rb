@@ -1,4 +1,5 @@
 class Admin::CustomersController < ApplicationController
+ 
   def index
     @customer=Customer.all
   end
@@ -9,4 +10,11 @@ class Admin::CustomersController < ApplicationController
 
   def edit
   end
+  
+  
+  
+  private
+
+  
 end
+

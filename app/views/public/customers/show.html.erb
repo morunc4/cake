@@ -1,11 +1,10 @@
 <div class="container px-5 pt-5">
   <h4 class="bg-secondary text-white col-2 px-4 mb-5">商品詳細</h4>
-  <div class="row">
-    <div class="col-2 h4 text-left">登録情報</div>
-      <div class="col-2 h4">
-      <%=link_to "編集する",edit_customer_path(current_customer.id),class: "btn btn-success" %>
+  <div class="row col-md-10">
+    <div class="col-2 h4 text-left font-weight-bold">登録情報</div>
+    <div class="col-9 h3">
+      <%=link_to "編集する",edit_customer_path(current_customer.id),class: "btn btn-success col-3" %>
     </div>
-    
   </div>
   <table class="table col-md-10">
     <tr class="border border-dark">
@@ -38,4 +37,10 @@
       <td class="border border-dark"><%=current_customer.email %></td>
     </tr>
   </table>
+  <div class="row col-md-10 mt-5">
+    <div class="col-2 h4 text-left font-weight-bold">配送先</div>
+    <div class="col-9 h3">
+      <%=link_to "一覧を見る",addresses_path,class: "btn btn-primary col-3" %>
+    </div>
+  </div>
 </div>

@@ -1,0 +1,60 @@
+<div class="container pt-5">
+  <div class="row">
+    <div class="col-md-9">
+      <h4 class="bg-secondary col-4 text-white px-0 mb-5 text-center">ショッピングカート</h4>
+    </div>
+    <div class="col-md-1"></div>
+    <div class="col-md-2">
+      <%=link_to "カートを空にする",destroy_all_cart_items_path,method: :delete,class: "btn btn-danger" %>
+    </div>
+  </div>
+  
+  
+  
+  <table class="table">
+    <thead>
+      <tr class="border border-dark bg-light">
+        <th class="border border-dark col-4 h5">商品名</th>
+        <th class="border border-dark col-2 h5">単価(税込)</td>
+        <th class="border border-dark col-2 h5">数量</th>
+        <th class="border border-dark col-2 h5">小計</td>
+        <th class="border border-dark col-2"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @cart_item.each do |cart_item| %>
+      <% @total=@total+ cart_item.subtotal %>
+        <tr class="border border-dark">
+          <td class="border border-dark h5"><%=image_tag cart_item.item.get_image(60,60) %><%=cart_item.item.name %></td>
+          <td class="border border-dark h5 "><%=cart_item.item.add_tax_price.to_s(:delimited) %></td>
+          <td class="border border-dark h5 ">
+            <%=form_with model: cart_item do |f| %>
+              <%=f.select :amount,{'1': 1,'2': 2,'3': 3,'4': 4,'5': 5,'6':6,'7':7,'8':8,'9':9},class: "form-select form-select-lg" %>
+              <%=f.submit "変更",class: "btn btn-success ml-3" %>
+            <%end %>
+          </td>
+          <td class="border border-dark h5 mt-4"><%=cart_item.subtotal.to_s(:delimited) %></td>
+          <td class="border border-dark"><%=link_to "削除する",cart_item_path(cart_item.id),method: :delete,class: "btn btn-danger" %></td>
+        </tr>
+        
+      <%end%>
+      
+    </tbody>
+  </table>
+  <div class="col-md-12 ml-3">
+    <table class="table ">
+      <tr>
+        <td class="border-0"><%=link_to "買い物を続ける",items_path,class: "btn btn-primary btn-lg" %></td>
+        <td class="col-2 border border-dark h5 bg-light pt-4">合計金額</td>
+        <td class="col-2 border border-dark h5 pt-4"><%=@total %></td>
+      </tr>
+    </table>
+  </div>
+  
+  <div class="row">
+    <div class="col-md-5 mx-auto ml-5">
+      <%=link_to "情報入力に進む",new_order_path,class: "btn btn-success btn-lg col-6 ml-5" %>
+    </div>
+      
+  </div>
+</div>

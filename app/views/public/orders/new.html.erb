@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="col-md-9">
+    <h4 class="bg-secondary col-4 text-white px-0 mb-5 text-center">注文情報入力</h4>
+  </div>
+  <div class="col-md-12">
+    <%=form_with model: @order %>
+      <h4 class="bg-secondary col-4 text-white px-0 mb-5 text-center">注文情報入力</h4>
+      <%=f.radio_button :payment_method, "credit_card" %>
+      <%=f.radio_button :payment_method, "transfer" %>
+    <%end%>
+  </div>
+  
+</div>

@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="d-flex">
+    <h2 class="font-weight-bold my-3">商品一覧</h2>
+    <h4 class="mt-4">(全<%=@items.count %>件)</h4>
+    
+  </div>
+  
+  
+  <div class="row">
+    <% @item.each do |item|  %>
+    <div class="col-md-3">
+      <%=link_to item_path(item.id) do %>
+        <%=image_tag item.get_image(200,200) %>
+      <%end%><br>
+        
+      <%=item.name %><br>
+        
+      ¥<%=item.add_tax_price.to_s(:delimited) %><br>
+    </div>
+    <%end%>
+    
+  </div>
+  <div class="row">
+    <div class="col-md-2 mt-5 mx-auto">
+      <%= paginate @item,window: 1,outer_window: 1 %>
+    </div>
+  </div>
+    
+  
+  
+</div>
+

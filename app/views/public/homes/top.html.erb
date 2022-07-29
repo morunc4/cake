@@ -22,8 +22,9 @@
   <div class="row">
     <% @item.each do |item|  %>
     <div class="col-md-3">
-      <%=image_tag item.get_image(200,200) %><br>
-        
+      <%=link_to item_path(item.id) do %>
+        <%=image_tag item.get_image(200,200) %><br>
+      <%end%>
       <%=item.name %><br>
         
       ¥<%=item.add_tax_price.to_s(:delimited) %><br>

@@ -43,4 +43,11 @@
       <%=link_to "一覧を見る",addresses_path,class: "btn btn-primary col-3" %>
     </div>
   </div>
+  
+  <div class="row col-md-10 mt-5">
+    <div class="col-2 h4 text-left font-weight-bold">注文履歴</div>
+    <div class="col-9 h3">
+      <%=link_to "一覧を見る",orders_path(current_customer.id),class: "btn btn-primary col-3" %>
+    </div>
+  </div>
 </div>

@@ -16,7 +16,7 @@
       <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
           
-          <a class="navbar-brand p-3"><%=link_to "ながのcake",root_path %></a>
+          <a class="navbar-brand p-3"><%=link_to "ながのcake",root_path,class: 'h4 text-dark' %></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -41,32 +41,32 @@
               </li>
             <% elsif admin_signed_in? %>
               <li class="nav-item">
-                <%=link_to "商品一覧",admin_items_path, class: 'mr-3 btn btn-outline-primary nav-link text-dark' %>
+                <%=link_to "商品一覧",admin_items_path, class: 'mr-3 btn btn-outline-secondary nav-link text-dark' %>
               </li>
               <li class="nav-item">
-                <%=link_to "会員一覧",admin_customers_path, class: 'mr-3 btn btn-outline-primary nav-link text-dark' %>
+                <%=link_to "会員一覧",admin_customers_path, class: 'mr-3 btn btn-outline-secondary nav-link text-dark' %>
               </li>
               <li class="nav-item">
-                <%=link_to "注文履歴一覧",admin_orders_path, class: 'mr-3 btn btn-outline-primary nav-link text-dark' %>
+                <%=link_to "注文履歴一覧",admin_orders_path, class: 'mr-3 btn btn-outline-secondary nav-link text-dark' %>
               </li>
               <li class="nav-item">
-                <%=link_to "ジャンル一覧",admin_genrse_index_path, class: 'mr-3 btn btn-outline-primary nav-link text-dark' %>
+                <%=link_to "ジャンル一覧",admin_genrse_index_path, class: 'mr-3 btn btn-outline-secondary nav-link text-dark' %>
               </li>
               <li class="nav-item">
-                <%=link_to "ログアウト", destroy_admin_session_path,method: :delete, class: 'mr-3 btn btn-outline-primary nav-link text-dark' %>
+                <%=link_to "ログアウト", destroy_admin_session_path,method: :delete, class: 'mr-3 btn btn-outline-secondary nav-link text-dark' %>
               </li>
             <% else %>
               <li clsas="nav-item">
-                <%=link_to "About",about_path, class: 'nav-link text-dark mr-3 px-3 btn btn-outline-primary ' %>
+                <%=link_to "About",about_path, class: 'nav-link text-dark mr-3 px-3 btn btn-outline-secondary' %>
               </li>
               <li class="nav-item">
-                <%=link_to "商品一覧", items_path,class: 'mr-3 btn btn-outline-primary nav-link text-dark' %>
+                <%=link_to "商品一覧", items_path,class: 'mr-3 btn btn-outline-secondary nav-link text-dark' %>
               </li>
               <li class="nav-item">
-                <%= link_to "新規登録", new_customer_registration_path, class: 'nav-link text-dark mr-3 btn btn-outline-primary' %>
+                <%= link_to "新規登録", new_customer_registration_path, class: 'nav-link text-dark mr-3 btn btn-outline-secondary' %>
               </li>
               <li class="nav-item">
-                <%= link_to "ログイン", new_customer_session_path, class: 'nav-link text-dark mr-3 btn btn-outline-primary' %>
+                <%= link_to "ログイン", new_customer_session_path, class: 'nav-link text-dark mr-3 btn btn-outline-secondary' %>
               </li>
             <% end %>
             </ul>
@@ -75,7 +75,10 @@
       </nav>
     </header>
 
-  <main>
-    <%= yield %>
-  </main>
+    <main>
+      <%= yield %>
+    </main>
+    
+    
+  </body>
 </html>

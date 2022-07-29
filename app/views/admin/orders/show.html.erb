@@ -1,37 +1,67 @@
-<h2>注文履歴詳細</h2>
-<table>
-  <tr>
-    <td>購入者</td>
-    <td><%=@order.customer.last_name %><%=@order.customer.first_name %></td>
-  </tr>
-  <tr>
-    <td>注文日</td>
-    <td><%=@order.created_at %></td>
-  </tr>
-  <tr>
-    <td>配送先</td>
-    <td>
-      <%=@order.delivery_postal_code %><%=@order.delivery_address %><br>
-      <%=@order.delivery_name %>
-    </td>
-  </tr>
-  <tr>
-    <td>支払方法</td>
-    <td><%=@order.payment_method %></td>
-  </tr>
-  
-</table>
-
-<table>
-  <thead>
+<div class="container mt-5">
+  <div class="col-md-9">
+    <h4 class="bg-secondary col-3 text-white text-center">注文履歴詳細</h4>
+  </div>
+  <table class="table">
     <tr>
-      <th>商品名</th>
-      <th>単価（税込）</th>
-      <th>数量</th>
-      <th>小計</th>
+      <td class="border-0 h5 font-weight-bold col-2">購入者</td>
+      <td class="border-0 h5"><%=@order.customer.last_name %><%=@order.customer.first_name %></td>
     </tr>
-  </thead>
-  <tbody>
-    <% @order.each do 
-  </tbody>
-</table>
+    <tr>
+      <td class="border-0 h5 font-weight-bold">注文日</td>
+      <td class="border-0 h5"><%=@order.created_at.strftime('%Y/%m/%d') %></td>
+    </tr>
+    <tr>
+      <td class="border-0 h5 font-weight-bold">配送先</td>
+      <td class="border-0 h5">
+        〒<%=@order.delivery_postal_code %> <%=@order.delivery_address %><br>
+        <%=@order.delivery_name %>
+      </td>
+    </tr>
+    <tr>
+      <td class="border-0 h5 font-weight-bold">支払方法</td>
+      <td class="border-0 h5"><%=@order.payment_method_i18n %></td>
+    </tr>
+    
+  </table>
+  <div class="row">
+    <div class="col-md-9">
+      <table class="table">
+        <thead>
+          <tr class="bg-light">
+            <th>商品名</th>
+            <th>単価（税込）</th>
+            <th>数量</th>
+            <th>小計</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @order.order_details.each do |order_detail| %>
+            <tr>
+              <td class="border-0"><%=order_detail.item.name %></td>
+              <td class="border-0"><%=order_detail.item.price.to_s(:delimited) %></td>
+              <td class="border-0"><%=order_detail.amount %></td>
+              <td class="border-0"><%=(order_detail.item.price*order_detail.amount).to_s(:delimited) %></td>
+            </tr>
+          <%end%>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-3 mb-0">
+      <table class="table">
+        <tr>
+          <td class="border-0 h5">商品合計</td>
+          <td class="border-0 h5"><%=(@order.billing_amount-@order.postage).to_s(:delimited) %>円</td>
+        </tr>
+        <tr>
+          <td class="border-0 h5">送料</td>
+          <td class="border-0 h5"><%=@order.postage %>円</td>
+        </tr>
+        <tr>
+          <td class="border-0 h5 font-weight-bold">請求合計金額</td>
+          <td class="border-0 h5 font-weight-bold"><%=@order.billing_amount.to_s(:delimited) %>円</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

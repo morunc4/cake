@@ -7,20 +7,26 @@
     <%=form_with model: @order,url: confirm_orders_path do |f| %>
       <%=f.hidden_field :postage, :value=>800 %>
       <h4 class="font-weight-bold">支払方法</h4>
-      <%=f.radio_button :payment_method,Order.payment_methods.key(0) %>
-      <%=f.label :payment_method,Order.payment_methods_i18n[:credit_card] %><br>
+      <div class="h5 ml-5">
+        <%=f.radio_button :payment_method,Order.payment_methods.key(0) %>
+        <%=f.label :payment_method,Order.payment_methods_i18n[:credit_card] %>
+      </div>
       
-      <%=f.radio_button :payment_method,Order.payment_methods.key(1) %>
-      <%=f.label :payment_method,Order.payment_methods_i18n[:transfer] %>
+      <div class="h5 ml-5">
+        <%=f.radio_button :payment_method,Order.payment_methods.key(1) %>
+        <%=f.label :payment_method,Order.payment_methods_i18n[:transfer] %>
+      </div>
       
-      <h4 class="font-weight-bold">配送先</h4>
+      <h4 class="font-weight-bold">お届け先</h4>
       <div>
-        <%=f.radio_button :select_address, 0 %>
-        <%=f.label :select_address, "ご自身の住所" %>
-        <div class="col-md-9">
+        <div class="h5 ml-5">
+          <%=f.radio_button :select_address, 0 %>
+          <%=f.label :select_address, "ご自身の住所" %>
+          </div>
+        <div class="col-md-9 ml-5">
           <div class="row">
-            <div class="col-3">
-              <p>
+            <div class="col-3 ml-5 ">
+              <p class="h5">
                 〒<%=current_customer.postal_code %> <%=current_customer.address %><br>
                 <%=current_customer.last_name %><%=current_customer.first_name %>
               </p>
@@ -30,19 +36,26 @@
       </div>
       
       <div>
-        <%=f.radio_button :select_address, 1 %>
-        <%=f.label :select_address, "登録済み住所から選択" %>
-        <div>
-          <%=f.select :address_id,options_from_collection_for_select(Address.where(customer_id: current_customer),:id,:address_display) %>
+        <div class="h5 ml-5">
+          <%=f.radio_button :select_address, 1 %>
+          <%=f.label :select_address, "登録済み住所から選択" %>
+        </div>
+        <div class="h5 ml-5">
+          <div class="ml-5">
+            <%=f.select :address_id,options_from_collection_for_select(Address.where(customer_id: current_customer),:id,:address_display) %>
+          </div>
+          
         </div>
       </div>
       
       <div>
-        <%=f.radio_button :select_address, 2 %>
-        <%=f.label :select_address, "新しいお届け先" %>
-        <div class="col-md-9">
+        <div class="h5 ml-5">
+          <%=f.radio_button :select_address, 2 %>
+          <%=f.label :select_address, "新しいお届け先" %>
+        </div>
+        <div class="col-md-10 ml-5 mb-2">
           <div class="row">
-            <div class="col-3">
+            <div class="col-3 ml-5 h6">
               <%=f.label :delivery_postal_code,"郵便番号(ハイフンなし)",class: "control-label" %>
             </div>
             <div class="col-4">
@@ -51,20 +64,20 @@
           </div>
         </div>
         
-        <div class="col-md-9">
+        <div class="col-md-10 ml-5 mb-2">
           <div class="row">
-            <div class="col-3">
+            <div class="col-3 ml-5 h6">
               <%=f.label :delivery_address,"住所",class: "control-label" %>
             </div>
-            <div class="col-4">
+            <div class="col-8">
               <%=f.text_field :delivery_address,class: "form-control" %>
             </div>
           </div>
         </div>
         
-        <div class="col-md-9">
+        <div class="col-md-10 ml-5 mb-2">
           <div class="row">
-            <div class="col-3">
+            <div class="col-3 ml-5 h6">
               <%=f.label :delivery_name,"宛名",class: "control-label" %>
             </div>
             <div class="col-4">
@@ -74,8 +87,10 @@
         </div>
       </div>
       
-      
-      <%=f.submit '確認画面へ進む' %>
+      <div class="text-center mt-3">
+         <%=f.submit '確認画面へ進む',class: "btn btn-primary btn-lg col-3" %>
+      </div>
+     
     <%end%>
   </div>
 </div>

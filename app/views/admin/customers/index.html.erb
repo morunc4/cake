@@ -15,20 +15,20 @@
       <tbody>
         <% @customer.each do |customer| %>
           <tr>
-            <th><%=customer.id %></th>
-            <th>
+            <td><%=customer.id %></td>
+            <td>
               <%=link_to admin_customer_path(customer.id),class: "text-dark" do %>
                 <%=customer.last_name+customer.first_name %>
               <%end%>
-            </th>
-            <th><%=customer.email %></th>
-            <th>
+            </td>
+            <td><%=customer.email %></td>
+            <td>
               <% if customer.is_deleted %>
                 <div class="text-success">有効</div>
               <%else%>
-              　<div class="text-secondary">退会</div>
+                <div class="text-secondary">退会</div>
               <%end%>
-            </th>
+            </td>
           </tr>
         <%end%>
       </tbody>

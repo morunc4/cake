@@ -14,7 +14,12 @@ Rails.application.routes.draw do
   root to: 'public/homes#top'
   get 'about'=>'public/homes#about'
   scope module: :public do
-    resources :customers,only:[:show,:edit]
+    resources :customers,only:[:show,:edit,:update] do
+      collection do
+        get :unsubscribe
+        patch :withdraw
+      end
+    end
     resources :addresses,only:[:index,:edit,:create,:destroy]
     resources :items,only:[:index,:show,]
     resources :cart_items,only:[:index,:update,:destroy,:create] do

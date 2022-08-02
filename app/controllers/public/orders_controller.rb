@@ -1,4 +1,6 @@
 class Public::OrdersController < ApplicationController
+  before_action :authenticate_customer!
+  
   def new
     @order=Order.new
   end
@@ -18,11 +20,9 @@ class Public::OrdersController < ApplicationController
       @order.delivery_address = @address.address
       @order.delivery_name = @address.name
     elsif select_address == "2"
-      if @order.invalid?
-        render :new
-      end
-    end
       
+    end
+    
    
   end
   

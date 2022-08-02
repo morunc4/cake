@@ -37,6 +37,10 @@ class Public::RegistrationsController < Devise::RegistrationsController
   # def cancel
   #   super
   # end
+  
+  def after_sign_up_path_for(resource)
+   customer_path(current_customer.id)
+  end
 
   # protected
 

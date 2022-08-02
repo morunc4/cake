@@ -5,7 +5,11 @@
   <table class="table">
     <tr>
       <td class="border-0 h5 font-weight-bold col-2">購入者</td>
-      <td class="border-0 h5"><%=@order.customer.last_name %><%=@order.customer.first_name %></td>
+      <td class="border-0 h5">
+        <%=link_to admin_orders_path,class: "text-dark" do %>
+          <%=@order.customer.last_name %><%=@order.customer.first_name %>
+        <%end%>
+      </td>
     </tr>
     <tr>
       <td class="border-0 h5 font-weight-bold">注文日</td>
@@ -38,7 +42,9 @@
         <tbody>
           <% @order.order_details.each do |order_detail| %>
             <tr>
-              <td class="border-0"><%=order_detail.item.name %></td>
+              <td class="border-0">
+                <%=order_detail.item.name %>
+              </td>
               <td class="border-0"><%=order_detail.item.price.to_s(:delimited) %></td>
               <td class="border-0"><%=order_detail.amount %></td>
               <td class="border-0"><%=(order_detail.item.price*order_detail.amount).to_s(:delimited) %></td>

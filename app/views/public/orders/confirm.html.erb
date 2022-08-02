@@ -58,7 +58,7 @@
       <%=@order.delivery_name %>
     </h4>
   </div>
-  <div>
+  <div class="text-center ">
     <%=form_with model: @order,url: orders_path do |f| %>
       <%=f.hidden_field :payment_method %>
       <%=f.hidden_field :delivery_postal_code %>
@@ -66,7 +66,7 @@
       <%=f.hidden_field :delivery_name %>
       <%=f.hidden_field :postage %>
       <%=f.hidden_field :billing_amount,:value=>@total+@order.postage %>
-      <%=f.submit "注文を確定する",class: "btn btn-success" %>
+      <%=f.submit "注文を確定する",class: "btn btn-success btn-lg col-3" %>
     <%end%>
   </div>
 </div>
